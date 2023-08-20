@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promotions List</title>
+</head>
+<body>
+    <h1>Promotions List</h1>
+    <ul>
+        {% for promotion in promotions %}
+            <li>{{ promotion.PromotionName }} ({{ promotion.PromotionStartDate }} - {{ promotion.PromotionEndDate }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Create Promotion</a>
+</body>
+</html>
