@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Promotions List</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Promotions overview</title>
 </head>
 <body>
-    <h1>Promotions List</h1>
+    <h1>Promotions overview</h1>
     <ul>
         {% for promotion in promotions %}
             <li>{{ promotion.PromotionName }} ({{ promotion.PromotionStartDate }} - {{ promotion.PromotionEndDate }})</li>
         {% endfor %}
     </ul>
-    <a href="/">Back to Create Promotion</a>
+    <button onclick="window.location.href = '/create_promotion';">create promotion</button>
+    <button onclick="window.location.href = '/';">Index</button>
 </body>
 </html>

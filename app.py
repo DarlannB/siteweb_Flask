@@ -8,6 +8,10 @@ DATABASE = 'database.db'  # Use your SQLite database path
 def index():
     return render_template('index.html')
 
+@app.route('/create_promotion', methods=['GET'])
+def createPromotion():
+    return render_template('create_promotion.html')
+
 @app.route('/create_promotion', methods=['POST'])
 def create_promotion():
     name = request.form['name']
@@ -27,7 +31,7 @@ def create_promotion():
 
     return redirect(url_for('list_promotions'))
 
-@app.route('/promotions')
+@app.route('/promotions', methods=['GET'])
 def list_promotions():
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()

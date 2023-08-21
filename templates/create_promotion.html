@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Promotion Management</title>
+</head>
+<body>
+    <h1>Promotion Management</h1>
+    
+    <form method="POST" action="/create_promotion">
+        <label for="name">Promotion Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="start_date">Start Date:</label>
+        <input type="text" id="start_date" name="start_date" required><br>
+
+        <label for="end_date">End Date:</label>
+        <input type="text" id="end_date" name="end_date" required><br>
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required><br>
+
+        <input type="submit" value="Create Promotion">
+    </form>
+    <button onclick="window.location.href = '/promotions';">promotion overview</button>
+    <button onclick="window.location.href = '/';">Index</button>
+</body>
+</html>
