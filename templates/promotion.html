@@ -2,13 +2,19 @@
 <html>
 <head>
     <link rel="stylesheet" href="static/css/style.css">
-    <title>Promotions overview</title>
+    <title>Promotions List</title>
 </head>
 <body>
-    <h1>Promotions overview</h1>
+    <h1>Promotions List</h1>
     <ul>
         {% for promotion in promotions %}
-            <li>{{ promotion.PromotionName }} ({{ promotion.PromotionStartDate }} - {{ promotion.PromotionEndDate }})</li>
+            <li>
+                {{promotion.PromotionNationality}} - {{ promotion.PromotionName }} ({{ promotion.PromotionStartDate }} - {{ promotion.PromotionEndDate }})
+                <form method="POST" action="/delete_promotion/{{ promotion.PromotionID }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
     <button onclick="window.location.href = '/create_promotion';">create promotion</button>
