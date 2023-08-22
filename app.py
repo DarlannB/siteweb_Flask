@@ -87,5 +87,14 @@ def pilotList():
     result_list = fetch_all(query)
     return render_template('pilot.html', pilots=result_list)
 
+@app.route('/delete_pilot/<int:pilot_id>', methods=['POST', 'DELETE'])
+def delete_pilot(pilot_id):
+    if request.method in ['POST', 'DELETE']:
+        query = "DELETE FROM pilot WHERE PilotID = ?"
+        parameters = (pilot_id,)
+        execute_query(query, parameters)
+        
+        return redirect(url_for('pilotList'))
+
 if __name__ == '__main__':
     app.run(debug=True)

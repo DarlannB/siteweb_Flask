@@ -11,6 +11,10 @@
         {% for pilot in pilots %}
             <li>
                 {{pilot.PilotName}} "{{ pilot.PilotCodeName }}" {{ pilot.PilotSurname }}
+                <form method="POST" action="/delete_pilot/{{ pilot.PilotID }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Delete</button>
+                </form>
             </li>
         {% endfor %}
     </ul>
