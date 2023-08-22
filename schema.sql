@@ -16,7 +16,5 @@ CREATE TABLE IF NOT EXISTS pilot (
     PilotName varchar(255),
     PilotSurname varchar(255),
     PilotCodeName varchar(255),
-    PilotNationality varchar(255),
-    FOREIGN KEY (PilotID) REFERENCES pilot (PilotID),
-    FOREIGN KEY (PromotionID) REFERENCES promotion (PromotionID)
+    PilotNationality varchar(255)
 );

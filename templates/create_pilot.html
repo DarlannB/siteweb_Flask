@@ -16,14 +16,15 @@
         
         <label for="CodeName">Code Name:</label>
         <input type="text" id="CodeName" name="CodeName" required><br>
-        
-        <label for="promotion">Select Promotion:</label>
+
+        <label for="promotion">Select a Promotion:</label>
         <select id="promotion" name="promotion" required>
             <option value="">Select a Promotion</option>
             {% for promotion in promotions %}
-                <option value="{{ promotion.PromotionID }}">{{ promotion.PromotionName }}</option>
+                <option value="{{ promotion.PromotionID }}">{{ promotion.PromotionName }} - {{promotion.PromotionNationality}}</option>
             {% endfor %}
         </select><br>
+        
         
         <input type="submit" value="Create Pilot">
     </form>
