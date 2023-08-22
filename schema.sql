@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS promotion (
 CREATE TABLE IF NOT EXISTS pilot (
     PilotID INTEGER PRIMARY KEY AUTOINCREMENT,
     PromotionID INTEGER,
-    PiloteName varchar(255),
-    PiloteSurname varchar(255),
-    PiloteCodeName varchar(255),
-    PiloteNationality varchar(255),
+    PilotName varchar(255),
+    PilotSurname varchar(255),
+    PilotCodeName varchar(255),
+    PilotNationality varchar(255),
     FOREIGN KEY (PilotID) REFERENCES pilot (PilotID),
     FOREIGN KEY (PromotionID) REFERENCES promotion (PromotionID)
 );

@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Pilots List</title>
+</head>
+<body>
+    <h1>Pilots List</h1>
+    <ul>
+        {% for pilot in pilots %}
+            <li>
+                {{pilot.PilotName}} "{{ pilot.PilotCodeName }}" {{ pilot.PilotSurname }}
+            </li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.location.href = '/create_pilot';">create pilot</button>
+    <button onclick="window.location.href = '/';">Index</button>
+</body>
+</html>

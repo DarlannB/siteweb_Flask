@@ -63,29 +63,41 @@ def delete_promotion(promotion_id):
     
 ################## PILOTS #################################################
 
+@app.route('/pilot_list', methods=['GET'])
+def pilotList():
+    return render_template('pilot.html')
+
+@app.route('/create_pilot', methods=['GET'])
+def createPilot():
+    conn = sqlite3.connect(DATABASE)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM promotion")
+    promotions = cursor.fetchall('PromotionName')
+
+    conn.close()
+
+    print(promotions)  # Check if promotions are being fetched correctly
+    return render_template('create_pilot.html', promotions=promotions)
+
 @app.route('/create_pilot', methods=['POST'])
 def create_pilot():
-    PiloteName = request.form['Name']
-    PiloteSurname = request.form['Surname']
-    Pilotecode_name =  request.form['Code Name']
-    Promotion = request.form['Promotion']
-    Group = request.form['Group']
+    name = request.form['PilotName']
+    surname = request.form['PilotSurname']
+    code_name = request.form['CodeName']
+    promotion_id = request.form['promotion']
 
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
 
-    cursor.execute("INSERT INTO pilot (PiloteName, PiloteSurname, PiloteCodeName, Group, Promotion) VALUES (?, ?, ?)",
-                   (PiloteName, PiloteSurname, Pilotecode_name, Group, Promotion))
-    pilot_id = cursor.lastrowid  # Get the ID of the inserted pilot
-
-    # Link the pilot to the selected promotion
-    cursor.execute("INSERT INTO pilot_promotion (PilotID, PromotionID) VALUES (?, ?)", (pilot_id, promotion_id))
-
+    cursor.execute("INSERT INTO pilot (PromotionID, PilotName, PilotSurname, PilotCodeName) VALUES (?, ?, ?, ?)",
+                    (promotion_id, name, surname, code_name))
+    
     conn.commit()
     conn.close()
 
-    return redirect(url_for('index'))
+    return render_template('pilot.html')
 
-
+    
 if __name__ == '__main__':
     app.run(debug=True)

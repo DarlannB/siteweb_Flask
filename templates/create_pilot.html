@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Create Pilot</title>
+</head>
+<body>
+    <h1>Create Pilot</h1>
+    
+    <form method="POST" action="/create_pilot">
+        <label for="PilotName">Name:</label>
+        <input type="text" id="PilotName" name="PilotName" required><br>
+        
+        <label for="PilotSurname">Surname:</label>
+        <input type="text" id="PilotSurname" name="PilotSurname" required><br>
+        
+        <label for="CodeName">Code Name:</label>
+        <input type="text" id="CodeName" name="CodeName" required><br>
+        
+        <label for="promotion">Select Promotion:</label>
+        <select id="promotion" name="promotion" required>
+            <option value="">Select a Promotion</option>
+            {% for promotion in promotions %}
+                <option value="{{ promotion.PromotionID }}">{{ promotion.PromotionName }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <input type="submit" value="Create Pilot">
+    </form>
+    
+    <button onclick="window.location.href = '/pilot_list';">Pilot List</button>
+    <button onclick="window.location.href = '/';">Index</button>
+</body>
+</html>
